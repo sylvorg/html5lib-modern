@@ -1,5 +1,3 @@
-from six import text_type
-
 from collections import OrderedDict
 
 from lxml import etree
@@ -13,7 +11,7 @@ from .. import _ihatexml
 def ensure_str(s):
     if s is None:
         return None
-    elif isinstance(s, text_type):
+    elif isinstance(s, str):
         return s
     else:
         return s.decode("ascii", "strict")

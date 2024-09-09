@@ -1,6 +1,4 @@
 
-from six import unichr as chr
-
 from collections import deque, OrderedDict
 from sys import version_info
 

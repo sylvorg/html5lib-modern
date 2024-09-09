@@ -2,8 +2,6 @@
 from collections import OrderedDict
 import re
 
-from six import string_types
-
 from . import base
 from .._utils import moduleFactoryFactory
 
@@ -50,7 +48,7 @@ def getETreeBuilder(ElementTreeImplementation):
                 return base.COMMENT, node.text
 
             else:
-                assert isinstance(node.tag, string_types), type(node.tag)
+                assert isinstance(node.tag, str), type(node.tag)
                 # This is assumed to be an ordinary element
                 match = tag_regexp.match(node.tag)
                 if match:

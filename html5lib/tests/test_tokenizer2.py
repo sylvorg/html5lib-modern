@@ -1,8 +1,6 @@
 
 import io
 
-from six import unichr, text_type
-
 from html5lib._tokenizer import HTMLTokenizer
 from html5lib.constants import tokenTypes
 
@@ -15,7 +13,7 @@ def ignore_parse_errors(toks):
 
 def test_maintain_attribute_order():
     # generate loads to maximize the chance a hash-based mutation will occur
-    attrs = [(unichr(x), text_type(i)) for i, x in enumerate(range(ord('a'), ord('z')))]
+    attrs = [(chr(x), str(i)) for i, x in enumerate(range(ord('a'), ord('z')))]
     stream = io.StringIO("<span " + " ".join("%s='%s'" % (x, i) for x, i in attrs) + ">")
 
     toks = HTMLTokenizer(stream)
@@ -48,7 +46,7 @@ def test_duplicate_attribute():
 
 def test_maintain_duplicate_attribute_order():
     # generate loads to maximize the chance a hash-based mutation will occur
-    attrs = [(unichr(x), text_type(i)) for i, x in enumerate(range(ord('a'), ord('z')))]
+    attrs = [(chr(x), str(i)) for i, x in enumerate(range(ord('a'), ord('z')))]
     stream = io.StringIO("<span " + " ".join("%s='%s'" % (x, i) for x, i in attrs) + " a=100>")
 
     toks = HTMLTokenizer(stream)
