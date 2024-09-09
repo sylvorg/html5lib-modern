@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, unicode_literals
 
 import codecs
 import json
@@ -12,7 +11,7 @@ from html5lib._tokenizer import HTMLTokenizer
 from html5lib import constants, _utils
 
 
-class TokenizerTestParser(object):
+class TokenizerTestParser:
     def __init__(self, initialState, lastStartTag=None):
         self.tokenizer = HTMLTokenizer
         self._state = initialState

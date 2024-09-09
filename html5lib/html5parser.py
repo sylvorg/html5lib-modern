@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, unicode_literals
 from six import viewkeys
 
 from . import _inputstream
@@ -69,7 +68,7 @@ def parseFragment(doc, container="div", treebuilder="etree", namespaceHTMLElemen
     return p.parseFragment(doc, container=container, **kwargs)
 
 
-class HTMLParser(object):
+class HTMLParser:
     """HTML parser
 
     Generates a tree structure from a stream of (possibly malformed) HTML.
@@ -397,7 +396,7 @@ class HTMLParser(object):
         self.phase = self.phases["text"]
 
 
-class Phase(object):
+class Phase:
     """Base class for helper object that implements each phase of processing
     """
     __slots__ = ("parser", "tree", "__startTagCache", "__endTagCache")

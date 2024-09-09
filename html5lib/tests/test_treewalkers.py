@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, unicode_literals
 
 import itertools
 import sys
@@ -74,11 +73,11 @@ def param_treewalker_six_mix():
     # fragment but not using the u'' syntax nor importing unicode_literals
     sm_tests = [
         ('<a href="http://example.com">Example</a>',
-         [(str('class'), str('test123'))],
+         [('class', 'test123')],
          '<a>\n  class="test123"\n  href="http://example.com"\n  "Example"'),
 
         ('<link href="http://example.com/cow">',
-         [(str('rel'), str('alternate'))],
+         [('rel', 'alternate')],
          '<link>\n  href="http://example.com/cow"\n  rel="alternate"\n  "Example"')
     ]
 

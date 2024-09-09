@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, unicode_literals
 from six import text_type
 
 import re
@@ -101,7 +100,7 @@ def serialize(input, tree="etree", encoding=None, **serializer_opts):
     return s.render(walker(input), encoding)
 
 
-class HTMLSerializer(object):
+class HTMLSerializer:
 
     # attribute quoting options
     quote_attr_values = "legacy"  # be secure by default

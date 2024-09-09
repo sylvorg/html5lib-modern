@@ -1,10 +1,6 @@
-from __future__ import absolute_import, division, unicode_literals
 
 import six
-try:
-    from unittest.mock import Mock
-except ImportError:
-    from mock import Mock
+from unittest.mock import Mock
 
 from . import support
 
