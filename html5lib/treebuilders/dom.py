@@ -1,9 +1,6 @@
 
 
-try:
-    from collections.abc import MutableMapping
-except ImportError:  # Python 2.7
-    from collections.abc import MutableMapping
+from collections.abc import MutableMapping
 from xml.dom import minidom, Node
 import weakref
 

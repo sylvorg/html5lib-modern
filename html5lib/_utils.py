@@ -1,10 +1,7 @@
 
 from types import ModuleType
 
-try:
-    from collections.abc import Mapping
-except ImportError:
-    from collections.abc import Mapping
+from collections.abc import Mapping
 
 from six import text_type, PY3
 

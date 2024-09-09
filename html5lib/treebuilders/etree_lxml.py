@@ -15,10 +15,7 @@ import warnings
 import re
 import sys
 
-try:
-    from collections.abc import MutableMapping
-except ImportError:
-    from collections.abc import MutableMapping
+from collections.abc import MutableMapping
 
 from . import base
 from ..constants import DataLossWarning

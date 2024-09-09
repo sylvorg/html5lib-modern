@@ -1,8 +1,5 @@
 
-try:
-    from collections.abc import Mapping
-except ImportError:  # Python 2.7
-    from collections.abc import Mapping
+from collections.abc import Mapping
 
 
 class Trie(Mapping):
