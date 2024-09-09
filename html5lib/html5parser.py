@@ -427,7 +427,7 @@ class Phase:
     def processStartTag(self, token):
         # Note the caching is done here rather than BoundMethodDispatcher as doing it there
         # requires a circular reference to the Phase, and this ends up with a significant
-        # (CPython 2.7, 3.8) GC cost when parsing many short inputs
+        # (CPython 3.8) GC cost when parsing many short inputs
         name = token["name"]
         # In Py2, using `in` is quicker in general than try/except KeyError
         # In Py3, `in` is quicker when there are few cache hits (typically short inputs)
@@ -454,7 +454,7 @@ class Phase:
     def processEndTag(self, token):
         # Note the caching is done here rather than BoundMethodDispatcher as doing it there
         # requires a circular reference to the Phase, and this ends up with a significant
-        # (CPython 2.7, 3.8) GC cost when parsing many short inputs
+        # (CPython 3.8) GC cost when parsing many short inputs
         name = token["name"]
         # In Py2, using `in` is quicker in general than try/except KeyError
         # In Py3, `in` is quicker when there are few cache hits (typically short inputs)
