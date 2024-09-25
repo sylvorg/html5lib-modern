@@ -101,9 +101,7 @@ setup(name='html5lib',
       maintainer='James Graham',
       maintainer_email='james@hoppipolla.co.uk',
       packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
-      install_requires=[
-          'webencodings>=0.5.1',
-      ],
+      install_requires=[],
       python_requires=">=3.8",
       extras_require={
           # A conditional extra will only install these items when the extra is
