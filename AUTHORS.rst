@@ -64,3 +64,8 @@ Patches and suggestions
 - Hugo van Kemenade
 - Mark Vasilkov
 
+
+HTML5Lib-modern
+---------------
+
+- Ashley Sommer
