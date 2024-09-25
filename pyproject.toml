@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -32,6 +32,9 @@ classifiers = [
 dependencies = []
 dynamic = ["version", "readme"]
 
+[tool.setuptools]
+include-package-data = false  # to disable including package data for tests (true by default)
+
 [tool.setuptools.dynamic]
 version = {attr = "html5lib.__version__"}  # any module attribute compatible with ast.literal_eval
 readme = {file = ["README.rst", "AUTHORS.rst"]}
@@ -41,3 +44,4 @@ where = ["."]  # list of folders that contain the packages (["."] by default)
 include = ["html5lib*"]  # package names should match these glob patterns (["*"] by default)
 exclude = ["html5lib.tests*"]  # exclude packages matching these glob patterns (empty by default)
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
+
