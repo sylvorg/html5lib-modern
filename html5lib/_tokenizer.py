@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, unicode_literals
 
 from six import unichr as chr
 
@@ -24,7 +23,7 @@ else:
     attributeMap = OrderedDict
 
 
-class HTMLTokenizer(object):
+class HTMLTokenizer:
     """ This class takes care of tokenizing HTML.
 
     * self.currentToken

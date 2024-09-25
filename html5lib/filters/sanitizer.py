@@ -6,7 +6,6 @@ is recommended as a replacement. Please let us know in the aforementioned issue
 if Bleach is unsuitable for your needs.
 
 """
-from __future__ import absolute_import, division, unicode_literals
 
 import re
 import warnings

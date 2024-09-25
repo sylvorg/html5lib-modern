@@ -9,17 +9,13 @@ Docypes with no name
 When any of these things occur, we emit a DataLossWarning
 """
 
-from __future__ import absolute_import, division, unicode_literals
 # pylint:disable=protected-access
 
 import warnings
 import re
 import sys
 
-try:
-    from collections.abc import MutableMapping
-except ImportError:
-    from collections import MutableMapping
+from collections.abc import MutableMapping
 
 from . import base
 from ..constants import DataLossWarning
@@ -37,14 +33,14 @@ tag_regexp = re.compile("{([^}]*)}(.*)")
 comment_type = etree.Comment("asd").tag
 
 
-class DocumentType(object):
+class DocumentType:
     def __init__(self, name, publicId, systemId):
         self.name = name
         self.publicId = publicId
         self.systemId = systemId
 
 
-class Document(object):
+class Document:
     def __init__(self):
         self._elementTree = None
         self._childNodes = []

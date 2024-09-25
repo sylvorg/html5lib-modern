@@ -1,11 +1,7 @@
-from __future__ import absolute_import, division, unicode_literals
 
 from types import ModuleType
 
-try:
-    from collections.abc import Mapping
-except ImportError:
-    from collections import Mapping
+from collections.abc import Mapping
 
 from six import text_type, PY3
 
@@ -13,7 +9,7 @@ if PY3:
     import xml.etree.ElementTree as default_etree
 else:
     try:
-        import xml.etree.cElementTree as default_etree
+        import xml.etree.ElementTree as default_etree
     except ImportError:
         import xml.etree.ElementTree as default_etree
 
@@ -122,7 +118,7 @@ def moduleFactoryFactory(factory):
     moduleCache = {}
 
     def moduleFactory(baseModule, *args, **kwargs):
-        if isinstance(ModuleType.__name__, type("")):
+        if isinstance(ModuleType.__name__, str):
             name = "_%s_factory" % baseModule.__name__
         else:
             name = b"_%s_factory" % baseModule.__name__
