@@ -1,5 +1,3 @@
-from six import text_type
-
 from ..constants import scopingElements, tableInsertModeElements, namespaces
 
 # The scope markers are inserted when entering object elements,
@@ -199,7 +197,7 @@ class TreeBuilder:
         # match any node with that name
         exactNode = hasattr(target, "nameTuple")
         if not exactNode:
-            if isinstance(target, text_type):
+            if isinstance(target, str):
                 target = (namespaces["html"], target)
             assert isinstance(target, tuple)
 
@@ -322,7 +320,7 @@ class TreeBuilder:
 
     def insertElementNormal(self, token):
         name = token["name"]
-        assert isinstance(name, text_type), "Element %s not unicode" % name
+        assert isinstance(name, str), "Element %s not unicode" % name
         namespace = token.get("namespace", self.defaultNamespace)
         element = self.elementClass(name, namespace)
         element.attributes = token["data"]

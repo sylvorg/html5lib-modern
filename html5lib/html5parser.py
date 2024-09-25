@@ -1,5 +1,3 @@
-from six import viewkeys
-
 from . import _inputstream
 from . import _tokenizer
 
@@ -2773,7 +2771,7 @@ _phases = {
 
 
 def adjust_attributes(token, replacements):
-    needs_adjustment = viewkeys(token['data']) & viewkeys(replacements)
+    needs_adjustment = token['data'].keys() & replacements.keys()
     if needs_adjustment:
         token['data'] = type(token['data'])((replacements.get(k, k), v)
                                             for k, v in token['data'].items())

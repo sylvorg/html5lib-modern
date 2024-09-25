@@ -1,7 +1,5 @@
 # pylint:disable=protected-access
 
-from six import text_type
-
 import re
 
 from copy import copy
@@ -221,7 +219,7 @@ def getETreeBuilder(ElementTreeImplementation, fullTree=False):
             elif element.tag == ElementTreeCommentType:
                 rv.append("|%s<!-- %s -->" % (' ' * indent, element.text))
             else:
-                assert isinstance(element.tag, text_type), \
+                assert isinstance(element.tag, str), \
                     "Expected unicode, got %s, %s" % (type(element.tag), element.tag)
                 nsmatch = tag_regexp.match(element.tag)
 
