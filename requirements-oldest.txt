@@ -1,7 +1,7 @@
 # This allows us to install the actually oldest supported dependencies and test whether that works.
 
 # requirements.txt
-webencodings==0.5.1
+# (nothing)
 
 # requirements-optional.txt
 genshi==0.7.1 ; python_version < '3.8'
