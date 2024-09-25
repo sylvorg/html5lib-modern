@@ -130,9 +130,9 @@ def HTMLInputStream(source, **kwargs):
          isinstance(source.fp, http.client.HTTPResponse))):
         isUnicode = False
     elif hasattr(source, "read"):
-        isUnicode = isinstance(source.read(0), text_type)
+        isUnicode = isinstance(source.read(0), str)
     else:
-        isUnicode = isinstance(source, text_type)
+        isUnicode = isinstance(source, str)
 
     if isUnicode:
         encodings = [x for x in kwargs if x.endswith("_encoding")]
