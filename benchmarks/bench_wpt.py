@@ -5,12 +5,12 @@ import sys
 import pyperf
 
 sys.path[0:0] = [os.path.join(os.path.dirname(__file__), "..")]
-import html5lib  # noqa: E402
+import html5rdf  # noqa: E402
 
 
 def bench_html5lib(fh):
     fh.seek(0)
-    html5lib.parse(fh, treebuilder="etree", useChardet=False)
+    html5rdf.parse(fh, treebuilder="etree", useChardet=False)
 
 
 def add_cmdline_args(cmd, args):

@@ -79,7 +79,7 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
 version = None
-with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
+with open(join(here, "html5rdf", "__init__.py"), "rb") as init_file:
     t = ast.parse(init_file.read(), filename="__init__.py", mode="exec")
     assert isinstance(t, ast.Module)
     assignments = filter(lambda x: isinstance(x, ast.Assign), t.body)
@@ -90,15 +90,15 @@ with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
                 isinstance(a.value, ast.Str)):
             version = a.value.s
 
-setup(name='html5lib',
+setup(name='html5rdf',
       version=version,
-      url='https://github.com/html5lib/html5lib-python',
+      url='https://github.com/RDFLib/html5rdf',
       license="MIT License",
       description='HTML parser based on the WHATWG HTML specification',
       long_description=long_description,
       classifiers=classifiers,
-      maintainer='James Graham',
-      maintainer_email='james@hoppipolla.co.uk',
+      maintainer='Ashley Sommer',
+      maintainer_email='ashleysommer@gmail.com',
       packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
       install_requires=[],
       python_requires=">=3.8",

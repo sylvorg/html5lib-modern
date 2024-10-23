@@ -1,6 +1,6 @@
 
-from html5lib.filters.whitespace import Filter
-from html5lib.constants import spaceCharacters
+from html5rdf.filters.whitespace import Filter
+from html5rdf.constants import spaceCharacters
 spaceCharacters = "".join(spaceCharacters)
 
 

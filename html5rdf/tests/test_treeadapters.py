@@ -1,14 +1,14 @@
 
 from . import support  # noqa
 
-import html5lib
-from html5lib.treeadapters import sax
-from html5lib.treewalkers import getTreeWalker
+import html5rdf
+from html5rdf.treeadapters import sax
+from html5rdf.treewalkers import getTreeWalker
 
 
 def test_to_sax():
     handler = support.TracingSaxHandler()
-    tree = html5lib.parse("""<html xml:lang="en">
+    tree = html5rdf.parse("""<html xml:lang="en">
         <title>Directory Listing</title>
         <a href="/"><b/></p>
     """, treebuilder="etree")

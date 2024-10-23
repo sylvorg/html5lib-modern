@@ -58,7 +58,7 @@ def getTreeBuilder(treeType, implementation=None, **kwargs):
 
     Example:
 
-    >>> from html5lib.treebuilders import getTreeBuilder
+    >>> from html5rdf.treebuilders import getTreeBuilder
     >>> builder = getTreeBuilder('etree')
 
     """

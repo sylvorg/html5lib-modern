@@ -7,10 +7,10 @@ import argparse
 import sys
 import traceback
 
-from html5lib import html5parser
-from html5lib import treebuilders, serializer, treewalkers
-from html5lib import constants
-from html5lib import _utils
+from html5rdf import html5parser
+from html5rdf import treebuilders, serializer, treewalkers
+from html5rdf import constants
+from html5rdf import _utils
 
 
 def parse():

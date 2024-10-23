@@ -1,5 +1,5 @@
 
-from html5lib.filters.optionaltags import Filter
+from html5rdf.filters.optionaltags import Filter
 
 
 def test_empty():

@@ -31,7 +31,7 @@ def parse(doc, treebuilder="etree", namespaceHTMLElements=True, **kwargs):
 
     Example:
 
-    >>> from html5lib.html5parser import parse
+    >>> from html5rdf.html5parser import parse
     >>> parse('<html><body><p>This is a doc</p></body></html>')
     <Element u'{http://www.w3.org/1999/xhtml}html' at 0x7feac4909db0>
 
@@ -56,7 +56,7 @@ def parseFragment(doc, container="div", treebuilder="etree", namespaceHTMLElemen
 
     Example:
 
-    >>> from html5lib.html5libparser import parseFragment
+    >>> from html5rdf.html5libparser import parseFragment
     >>> parseFragment('<b>this is a fragment</b>')
     <Element u'DOCUMENT_FRAGMENT' at 0x7feac484b090>
 
@@ -87,7 +87,7 @@ class HTMLParser:
 
         Example:
 
-        >>> from html5lib.html5parser import HTMLParser
+        >>> from html5rdf.html5parser import HTMLParser
         >>> parser = HTMLParser()                     # generates parser with etree builder
         >>> parser = HTMLParser('lxml', strict=True)  # generates parser with lxml builder which is strict
 
@@ -276,7 +276,7 @@ class HTMLParser:
 
         Example:
 
-        >>> from html5lib.html5parser import HTMLParser
+        >>> from html5rdf.html5parser import HTMLParser
         >>> parser = HTMLParser()
         >>> parser.parse('<html><body><p>This is a doc</p></body></html>')
         <Element u'{http://www.w3.org/1999/xhtml}html' at 0x7feac4909db0>
@@ -304,7 +304,7 @@ class HTMLParser:
 
         Example:
 
-        >>> from html5lib.html5libparser import HTMLParser
+        >>> from html5rdf.html5libparser import HTMLParser
         >>> parser = HTMLParser()
         >>> parser.parseFragment('<b>this is a fragment</b>')
         <Element u'DOCUMENT_FRAGMENT' at 0x7feac484b090>

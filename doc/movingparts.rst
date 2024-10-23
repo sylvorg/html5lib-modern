@@ -67,6 +67,150 @@ The serializer lets you write HTML back as a stream of bytes.
 
 .. code-block:: pycon
 
+  >>> import html5rdf
+  >>> element = html5lib.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5lib.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5lib.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5rdf
+  >>> element = html5lib.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5lib.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5lib.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5lib
+  >>> element = html5rdf.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5lib.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5lib.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5lib
+  >>> element = html5rdf.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5lib.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5lib.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5lib
+  >>> element = html5rdf.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5rdf.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5lib.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5lib
+  >>> element = html5rdf.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5rdf.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5lib.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5lib
+  >>> element = html5rdf.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5rdf.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5rdf.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
+  >>> import html5lib
+  >>> element = html5rdf.parse('<p xml:lang="pl">Witam wszystkich')
+  >>> walker = html5rdf.getTreeWalker("etree")
+  >>> stream = walker(element)
+  >>> s = html5rdf.serializer.HTMLSerializer()
+  >>> output = s.serialize(stream)
+  >>> for item in output:
+  ...   print("%r" % item)
+  '<p'
+  ' '
+  'xml:lang'
+  '='
+  'pl'
+  '>'
+  'Witam wszystkich'
+
+You can customize the serializer behaviour in a variety of ways. Consult
+the
   >>> import html5lib
   >>> element = html5lib.parse('<p xml:lang="pl">Witam wszystkich')
   >>> walker = html5lib.getTreeWalker("etree")

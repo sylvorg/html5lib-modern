@@ -6,10 +6,10 @@ import pytest
 
 from .support import get_data_files
 
-from html5lib import constants
-from html5lib.filters.lint import Filter as Lint
-from html5lib.serializer import HTMLSerializer, serialize
-from html5lib.treewalkers.base import TreeWalker
+from html5rdf import constants
+from html5rdf.filters.lint import Filter as Lint
+from html5rdf.serializer import HTMLSerializer, serialize
+from html5rdf.treewalkers.base import TreeWalker
 
 # pylint:disable=wrong-import-position
 optionals_loaded = []

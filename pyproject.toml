@@ -3,9 +3,9 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "html5lib-modern"
+name = "html5rdf"
 authors = [
-    # HTML5Lib-modern author:
+    # HTML5Lib-modern and HTML5rdf author:
     {name = "Ashley Sommer", email = "ashleysommer@gmail.com"},
     # Original HTML5Lib author:
     {name = "James Graham", email = "james@hoppipolla.co.uk"},
@@ -24,6 +24,7 @@ classifiers = [
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Programming Language :: Python :: Implementation :: CPython',
     'Programming Language :: Python :: Implementation :: PyPy',
     'Topic :: Software Development :: Libraries :: Python Modules',
@@ -36,12 +37,12 @@ dynamic = ["version", "readme"]
 include-package-data = false  # to disable including package data for tests (true by default)
 
 [tool.setuptools.dynamic]
-version = {attr = "html5lib.__version__"}  # any module attribute compatible with ast.literal_eval
+version = {attr = "html5rdf.__version__"}  # any module attribute compatible with ast.literal_eval
 readme = {file = ["README.rst", "AUTHORS.rst"]}
 
 [tool.setuptools.packages.find]
 where = ["."]  # list of folders that contain the packages (["."] by default)
-include = ["html5lib*"]  # package names should match these glob patterns (["*"] by default)
-exclude = ["html5lib.tests*"]  # exclude packages matching these glob patterns (empty by default)
+include = ["html5rdf*"]  # package names should match these glob patterns (["*"] by default)
+exclude = ["html5rdf.tests*"]  # exclude packages matching these glob patterns (empty by default)
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 

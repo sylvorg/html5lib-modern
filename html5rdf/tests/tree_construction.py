@@ -7,8 +7,8 @@ from difflib import unified_diff
 import pytest
 
 from .support import TestData, convert, convertExpected, treeTypes
-from html5lib import html5parser, constants, treewalkers
-from html5lib.filters.lint import Filter as Lint
+from html5rdf import html5parser, constants, treewalkers
+from html5rdf.filters.lint import Filter as Lint
 
 _attrlist_re = re.compile(r"^(\s+)\w+=.*(\n\1\w+=.*)+", re.M)
 

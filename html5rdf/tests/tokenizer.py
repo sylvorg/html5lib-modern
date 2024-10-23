@@ -6,8 +6,8 @@ import re
 
 import pytest
 
-from html5lib._tokenizer import HTMLTokenizer
-from html5lib import constants, _utils
+from html5rdf._tokenizer import HTMLTokenizer
+from html5rdf import constants, _utils
 
 
 class TokenizerTestParser:

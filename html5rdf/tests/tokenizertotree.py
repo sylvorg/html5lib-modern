@@ -4,11 +4,11 @@ import os
 import json
 import re
 
-import html5lib
+import html5rdf
 from . import support
 from . import test_tokenizer
 
-p = html5lib.HTMLParser()
+p = html5rdf.HTMLParser()
 
 unnamespaceExpected = re.compile(r"^(\|\s*)<html ([^>]+)>", re.M).sub
 

@@ -5,23 +5,23 @@ import sys
 import pyperf
 
 sys.path[0:0] = [os.path.join(os.path.dirname(__file__), "..")]
-import html5lib  # noqa: E402
+import html5rdf  # noqa: E402
 
 
 def bench_parse(fh, treebuilder):
     fh.seek(0)
-    html5lib.parse(fh, treebuilder=treebuilder, useChardet=False)
+    html5rdf.parse(fh, treebuilder=treebuilder, useChardet=False)
 
 
 def bench_serialize(loops, fh, treebuilder):
     fh.seek(0)
-    doc = html5lib.parse(fh, treebuilder=treebuilder, useChardet=False)
+    doc = html5rdf.parse(fh, treebuilder=treebuilder, useChardet=False)
 
     range_it = range(loops)
     t0 = pyperf.perf_counter()
 
     for loops in range_it:
-        html5lib.serialize(doc, tree=treebuilder, encoding="ascii", inject_meta_charset=False)
+        html5rdf.serialize(doc, tree=treebuilder, encoding="ascii", inject_meta_charset=False)
 
     return pyperf.perf_counter() - t0
 

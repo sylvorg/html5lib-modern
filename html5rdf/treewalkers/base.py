@@ -104,7 +104,7 @@ class TreeWalker:
 
         For example:
 
-            >>> from html5lib.treewalkers.base import TreeWalker
+            >>> from html5rdf.treewalkers.base import TreeWalker
             >>> # Give it an empty tree just so it instantiates
             >>> walker = TreeWalker([])
             >>> list(walker.text(''))

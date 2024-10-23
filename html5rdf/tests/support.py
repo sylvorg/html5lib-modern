@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(base_path,
                                                 os.path.pardir,
                                                 os.path.pardir)))
 
-from html5lib import treebuilders, treewalkers, treeadapters  # noqa
+from html5rdf import treebuilders, treewalkers, treeadapters  # noqa
 del base_path
 
 # Build a dict of available trees

@@ -3,9 +3,9 @@ from collections import OrderedDict
 
 import pytest
 
-import html5lib
-from html5lib.filters.alphabeticalattributes import Filter
-from html5lib.serializer import HTMLSerializer
+import html5rdf
+from html5rdf.filters.alphabeticalattributes import Filter
+from html5rdf.serializer import HTMLSerializer
 
 
 @pytest.mark.parametrize('msg, attrs, expected_attrs', [
@@ -61,9 +61,9 @@ def test_with_different_namespaces():
 
 def test_with_serializer():
     """Verify filter works in the context of everything else"""
-    parser = html5lib.HTMLParser()
+    parser = html5rdf.HTMLParser()
     dom = parser.parseFragment('<svg><pattern xlink:href="#patt2" id="patt1"></svg>')
-    walker = html5lib.getTreeWalker('etree')
+    walker = html5rdf.getTreeWalker('etree')
     ser = HTMLSerializer(
         alphabetical_attributes=True,
         quote_attr_values='always'

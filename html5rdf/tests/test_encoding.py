@@ -4,7 +4,7 @@ import os
 import pytest
 
 from .support import get_data_files, test_dir, errorMessage, TestData as _TestData
-from html5lib import HTMLParser, _inputstream
+from html5rdf import HTMLParser, _inputstream
 
 
 def test_basic_prescan_length():

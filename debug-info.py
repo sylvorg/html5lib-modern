@@ -11,7 +11,7 @@ info = {
     "maxsize": sys.maxsize
 }
 
-search_modules = ["chardet", "genshi", "html5lib", "lxml"]
+search_modules = ["chardet", "genshi", "html5rdf", "lxml"]
 found_modules = []
 
 for m in search_modules:
@@ -25,7 +25,7 @@ for m in search_modules:
 info["modules"] = ", ".join(found_modules)
 
 
-print("""html5lib debug info:
+print("""html5rdf debug info:
 
 Python %(version)s (revision: %(revision)s)
 Implementation: %(impl)s

@@ -6,7 +6,6 @@ import pytest
 
 from .tree_construction import TreeConstructionFile
 from .tokenizer import TokenizerFile
-from .sanitizer import SanitizerFile
 
 _dir = os.path.abspath(os.path.dirname(__file__))
 _root = os.path.join(_dir, "..", "..")
@@ -102,9 +101,6 @@ def pytest_collect_file(path, parent):
     elif _tokenizer in dir_and_parents:
         if path.ext == ".test":
             return TokenizerFile.from_parent(parent, fspath=path)
-    elif _sanitizer_testdata in dir_and_parents:
-        if path.ext == ".dat":
-            return SanitizerFile.from_parent(parent, fspath=path)
 
 
 # Tiny wrapper to allow .from_parent constructors on older pytest for PY27

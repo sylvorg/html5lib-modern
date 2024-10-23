@@ -10,9 +10,9 @@ import pytest
 import http.client
 import urllib.response
 
-from html5lib._inputstream import (BufferedStream, HTMLInputStream,
+from html5rdf._inputstream import (BufferedStream, HTMLInputStream,
                                    HTMLUnicodeInputStream, HTMLBinaryInputStream)
-from html5lib._utils import supports_lone_surrogates
+from html5rdf._utils import supports_lone_surrogates
 
 
 def test_basic():

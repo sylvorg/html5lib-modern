@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from html5lib import parseFragment, serialize
+from html5rdf import parseFragment, serialize
 
 
 class SanitizerFile(pytest.File):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# html5lib documentation build configuration file, created by
+# html5rdf documentation build configuration file, created by
 # sphinx-quickstart on Wed May  8 00:04:49 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -31,7 +31,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'html5lib'
+project = 'html5rdf'
 copyright = '2006 - 2013, James Graham, Sam Sneddon, and contributors'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -42,7 +42,7 @@ copyright = '2006 - 2013, James Graham, Sam Sneddon, and contributors'
 version = '1.0'
 # The full version, including alpha/beta/rc tags.
 sys.path.append(os.path.abspath('..'))
-from html5lib import __version__  # noqa
+from html5rdf import __version__  # noqa
 release = __version__
 
 # List of patterns, relative to source directory, that match files and

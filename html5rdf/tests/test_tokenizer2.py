@@ -1,8 +1,8 @@
 
 import io
 
-from html5lib._tokenizer import HTMLTokenizer
-from html5lib.constants import tokenTypes
+from html5rdf._tokenizer import HTMLTokenizer
+from html5rdf.constants import tokenTypes
 
 
 def ignore_parse_errors(toks):

@@ -85,8 +85,8 @@ def serialize(input, tree="etree", encoding=None, **serializer_opts):
 
     Example:
 
-    >>> from html5lib.html5parser import parse
-    >>> from html5lib.serializer import serialize
+    >>> from html5rdf.html5parser import parse
+    >>> from html5rdf.serializer import serialize
     >>> token_stream = parse('<html><body><p>Hi!</p></body></html>')
     >>> serialize(token_stream, omit_optional_tags=False)
     '<html><head></head><body><p>Hi!</p></body></html>'
@@ -120,14 +120,13 @@ class HTMLSerializer:
     alphabetical_attributes = False
     inject_meta_charset = True
     strip_whitespace = False
-    sanitize = False
 
     options = ("quote_attr_values", "quote_char", "use_best_quote_char",
                "omit_optional_tags", "minimize_boolean_attributes",
                "use_trailing_solidus", "space_before_trailing_solidus",
                "escape_lt_in_attrs", "escape_rcdata", "resolve_entities",
                "alphabetical_attributes", "inject_meta_charset",
-               "strip_whitespace", "sanitize")
+               "strip_whitespace")
 
     def __init__(self, **kwargs):
         """Initialize HTMLSerializer
@@ -194,11 +193,6 @@ class HTMLSerializer:
 
             Defaults to ``True``.
 
-        :arg sanitize: Strip all unsafe or unknown constructs from output.
-            See :py:class:`html5lib.filters.sanitizer.Filter`.
-
-            Defaults to ``False``.
-
         :arg omit_optional_tags: Omit start/end tags that are optional.
 
             Defaults to ``True``.
@@ -251,9 +245,6 @@ class HTMLSerializer:
         # for maximum efficiently of this latter filter
         if self.strip_whitespace:
             from .filters.whitespace import Filter
-            treewalker = Filter(treewalker)
-        if self.sanitize:
-            from .filters.sanitizer import Filter
             treewalker = Filter(treewalker)
         if self.omit_optional_tags:
             from .filters.optionaltags import Filter
@@ -380,8 +371,8 @@ class HTMLSerializer:
 
         Example:
 
-        >>> from html5lib import parse, getTreeWalker
-        >>> from html5lib.serializer import HTMLSerializer
+        >>> from html5rdf import parse, getTreeWalker
+        >>> from html5rdf.serializer import HTMLSerializer
         >>> token_stream = parse('<html><body>Hi!</body></html>')
         >>> walker = getTreeWalker('etree')
         >>> serializer = HTMLSerializer(omit_optional_tags=False)

@@ -1,10 +1,10 @@
 import json
 
-import html5lib
+import html5rdf
 
 
 def parse(path="html5ents.xml"):
-    return html5lib.parse(open(path), treebuilder="lxml")
+    return html5rdf.parse(open(path), treebuilder="lxml")
 
 
 def entity_table(tree):
