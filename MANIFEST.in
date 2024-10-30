@@ -6,5 +6,5 @@ include requirements*.txt
 include .pytest.expect
 include tox.ini
 include pytest.ini
-graft html5lib/tests/testdata
-recursive-include html5lib/tests *.py
+graft html5rdf/tests/testdata
+recursive-include html5rdf/tests *.py
