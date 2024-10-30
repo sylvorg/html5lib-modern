@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.2.1
+~~~~~
+
+Forked to html5rdf project for the rdflib library.
+Removed the deprecated sanitization module.
+
+
 1.2
 ~~~
 
