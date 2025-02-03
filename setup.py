@@ -78,6 +78,10 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
     with codecs.open(join(here, 'CHANGES.rst'), 'r', 'utf8') as changes_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
+class astStr(ast.Constant, metaclass=ast._ABC):
+    _fields = ('s',)
+    __new__ = _new
+
 version = None
 with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
     t = ast.parse(init_file.read(), filename="__init__.py", mode="exec")
@@ -87,7 +91,7 @@ with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
         if (len(a.targets) == 1 and
                 isinstance(a.targets[0], ast.Name) and
                 a.targets[0].id == "__version__" and
-                isinstance(a.value, ast.Str)):
+                isinstance(a.value, astStr)):
             version = a.value.s
 
 setup(name='html5lib',
