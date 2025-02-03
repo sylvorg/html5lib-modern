@@ -78,17 +78,6 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
     with codecs.open(join(here, 'CHANGES.rst'), 'r', 'utf8') as changes_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
-_const_types = {
-    Num: (int, float, complex),
-    Str: (str,),
-    Bytes: (bytes,),
-    NameConstant: (type(None), bool),
-    Ellipsis: (type(...),),
-}
-_const_types_not = {
-    Num: (bool,),
-}
-
 class _ABC(type):
 
     def __init__(cls, *args):
@@ -147,6 +136,17 @@ class Ellipsis(ast.Constant, metaclass=_ABC):
 # so it can be referenced in Ellipsis.__new__
 # (The original "Ellipsis" name is removed from the global namespace later on)
 _ast_Ellipsis = Ellipsis
+
+_const_types = {
+    Num: (int, float, complex),
+    Str: (str,),
+    Bytes: (bytes,),
+    NameConstant: (type(None), bool),
+    Ellipsis: (type(...),),
+}
+_const_types_not = {
+    Num: (bool,),
+}
 
 version = None
 with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
