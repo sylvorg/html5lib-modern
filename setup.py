@@ -116,9 +116,37 @@ class _ABC(type):
                 )
         return type.__instancecheck__(cls, inst)
 
-class astStr(ast.Constant, metaclass=_ABC):
+class Num(ast.Constant, metaclass=_ABC):
+    _fields = ('n',)
+    __new__ = _new
+
+class Str(ast.Constant, metaclass=_ABC):
     _fields = ('s',)
     __new__ = _new
+
+class Bytes(ast.Constant, metaclass=_ABC):
+    _fields = ('s',)
+    __new__ = _new
+
+class NameConstant(ast.Constant, metaclass=_ABC):
+    __new__ = _new
+
+class Ellipsis(ast.Constant, metaclass=_ABC):
+    _fields = ()
+
+    def __new__(cls, *args, **kwargs):
+        if cls is _ast_Ellipsis:
+            import warnings
+            warnings._deprecated(
+                "ast.Ellipsis", message=_DEPRECATED_CLASS_MESSAGE, remove=(3, 14)
+            )
+            return Constant(..., *args, **kwargs)
+        return ast.Constant.__new__(cls, *args, **kwargs)
+
+# Keep another reference to Ellipsis in the global namespace
+# so it can be referenced in Ellipsis.__new__
+# (The original "Ellipsis" name is removed from the global namespace later on)
+_ast_Ellipsis = Ellipsis
 
 version = None
 with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
@@ -129,7 +157,7 @@ with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
         if (len(a.targets) == 1 and
                 isinstance(a.targets[0], ast.Name) and
                 a.targets[0].id == "__version__" and
-                isinstance(a.value, astStr)):
+                isinstance(a.value, Str)):
             version = a.value.s
 
 setup(name='html5lib',
