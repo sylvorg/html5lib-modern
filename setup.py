@@ -78,7 +78,45 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
     with codecs.open(join(here, 'CHANGES.rst'), 'r', 'utf8') as changes_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
-class astStr(ast.Constant, metaclass=ast._ABC):
+_const_types = {
+    Num: (int, float, complex),
+    Str: (str,),
+    Bytes: (bytes,),
+    NameConstant: (type(None), bool),
+    Ellipsis: (type(...),),
+}
+_const_types_not = {
+    Num: (bool,),
+}
+
+class _ABC(type):
+
+    def __init__(cls, *args):
+        cls.__doc__ = """Deprecated AST node class. Use ast.Constant instead"""
+
+    def __instancecheck__(cls, inst):
+        if cls in _const_types:
+            import warnings
+            warnings._deprecated(
+                f"ast.{cls.__qualname__}",
+                message=_DEPRECATED_CLASS_MESSAGE,
+                remove=(3, 14)
+            )
+        if not isinstance(inst, ast.Constant):
+            return False
+        if cls in _const_types:
+            try:
+                value = inst.value
+            except AttributeError:
+                return False
+            else:
+                return (
+                    isinstance(value, _const_types[cls]) and
+                    not isinstance(value, _const_types_not.get(cls, ()))
+                )
+        return type.__instancecheck__(cls, inst)
+
+class astStr(ast.Constant, metaclass=_ABC):
     _fields = ('s',)
     __new__ = _new
 
