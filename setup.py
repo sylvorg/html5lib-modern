@@ -78,10 +78,51 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
     with codecs.open(join(here, 'CHANGES.rst'), 'r', 'utf8') as changes_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
+_DEPRECATED_VALUE_ALIAS_MESSAGE = (
+    "{name} is deprecated and will be removed in Python {remove}; use value instead"
+)
 _DEPRECATED_CLASS_MESSAGE = (
     "{name} is deprecated and will be removed in Python {remove}; "
     "use ast.Constant instead"
 )
+
+# If the ast module is loaded more than once, only add deprecated methods once
+if not hasattr(ast.Constant, 'n'):
+    # The following code is for backward compatibility.
+    # It will be removed in future.
+
+    def _n_getter(self):
+        """Deprecated. Use value instead."""
+        import warnings
+        warnings._deprecated(
+            "Attribute n", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
+        )
+        return self.value
+
+    def _n_setter(self, value):
+        import warnings
+        warnings._deprecated(
+            "Attribute n", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
+        )
+        self.value = value
+
+    def _s_getter(self):
+        """Deprecated. Use value instead."""
+        import warnings
+        warnings._deprecated(
+            "Attribute s", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
+        )
+        return self.value
+
+    def _s_setter(self, value):
+        import warnings
+        warnings._deprecated(
+            "Attribute s", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
+        )
+        self.value = value
+
+    ast.Constant.n = property(_n_getter, _n_setter)
+    ast.Constant.s = property(_s_getter, _s_setter)
 
 class _ABC(type):
 
