@@ -78,6 +78,11 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
     with codecs.open(join(here, 'CHANGES.rst'), 'r', 'utf8') as changes_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
+_DEPRECATED_CLASS_MESSAGE = (
+    "{name} is deprecated and will be removed in Python {remove}; "
+    "use ast.Constant instead"
+)
+
 class _ABC(type):
 
     def __init__(cls, *args):
