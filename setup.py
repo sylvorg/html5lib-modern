@@ -78,138 +78,6 @@ with codecs.open(join(here, 'README.rst'), 'r', 'utf8') as readme_file:
     with codecs.open(join(here, 'CHANGES.rst'), 'r', 'utf8') as changes_file:
         long_description = readme_file.read() + '\n' + changes_file.read()
 
-_DEPRECATED_VALUE_ALIAS_MESSAGE = (
-    "{name} is deprecated and will be removed in Python {remove}; use value instead"
-)
-_DEPRECATED_CLASS_MESSAGE = (
-    "{name} is deprecated and will be removed in Python {remove}; "
-    "use ast.Constant instead"
-)
-
-# If the ast module is loaded more than once, only add deprecated methods once
-if not hasattr(ast.Constant, 'n'):
-    # The following code is for backward compatibility.
-    # It will be removed in future.
-
-    def _n_getter(self):
-        """Deprecated. Use value instead."""
-        import warnings
-        warnings._deprecated(
-            "Attribute n", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
-        )
-        return self.value
-
-    def _n_setter(self, value):
-        import warnings
-        warnings._deprecated(
-            "Attribute n", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
-        )
-        self.value = value
-
-    def _s_getter(self):
-        """Deprecated. Use value instead."""
-        import warnings
-        warnings._deprecated(
-            "Attribute s", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
-        )
-        return self.value
-
-    def _s_setter(self, value):
-        import warnings
-        warnings._deprecated(
-            "Attribute s", message=_DEPRECATED_VALUE_ALIAS_MESSAGE, remove=(3, 14)
-        )
-        self.value = value
-
-    ast.Constant.n = property(_n_getter, _n_setter)
-    ast.Constant.s = property(_s_getter, _s_setter)
-
-class _ABC(type):
-
-    def __init__(cls, *args):
-        cls.__doc__ = """Deprecated AST node class. Use ast.Constant instead"""
-
-    def __instancecheck__(cls, inst):
-        if cls in _const_types:
-            import warnings
-            warnings._deprecated(
-                f"ast.{cls.__qualname__}",
-                message=_DEPRECATED_CLASS_MESSAGE,
-                remove=(3, 14)
-            )
-        if not isinstance(inst, ast.Constant):
-            return False
-        if cls in _const_types:
-            try:
-                value = inst.value
-            except AttributeError:
-                return False
-            else:
-                return (
-                    isinstance(value, _const_types[cls]) and
-                    not isinstance(value, _const_types_not.get(cls, ()))
-                )
-        return type.__instancecheck__(cls, inst)
-
-def _new(cls, *args, **kwargs):
-    for key in kwargs:
-        if key not in cls._fields:
-            # arbitrary keyword arguments are accepted
-            continue
-        pos = cls._fields.index(key)
-        if pos < len(args):
-            raise TypeError(f"{cls.__name__} got multiple values for argument {key!r}")
-    if cls in _const_types:
-        import warnings
-        warnings._deprecated(
-            f"ast.{cls.__qualname__}", message=_DEPRECATED_CLASS_MESSAGE, remove=(3, 14)
-        )
-        return ast.Constant(*args, **kwargs)
-    return ast.Constant.__new__(cls, *args, **kwargs)
-
-class Num(ast.Constant, metaclass=_ABC):
-    _fields = ('n',)
-    __new__ = _new
-
-class Str(ast.Constant, metaclass=_ABC):
-    _fields = ('s',)
-    __new__ = _new
-
-class Bytes(ast.Constant, metaclass=_ABC):
-    _fields = ('s',)
-    __new__ = _new
-
-class NameConstant(ast.Constant, metaclass=_ABC):
-    __new__ = _new
-
-class Ellipsis(ast.Constant, metaclass=_ABC):
-    _fields = ()
-
-    def __new__(cls, *args, **kwargs):
-        if cls is _ast_Ellipsis:
-            import warnings
-            warnings._deprecated(
-                "ast.Ellipsis", message=_DEPRECATED_CLASS_MESSAGE, remove=(3, 14)
-            )
-            return Constant(..., *args, **kwargs)
-        return ast.Constant.__new__(cls, *args, **kwargs)
-
-# Keep another reference to Ellipsis in the global namespace
-# so it can be referenced in Ellipsis.__new__
-# (The original "Ellipsis" name is removed from the global namespace later on)
-_ast_Ellipsis = Ellipsis
-
-_const_types = {
-    Num: (int, float, complex),
-    Str: (str,),
-    Bytes: (bytes,),
-    NameConstant: (type(None), bool),
-    Ellipsis: (type(...),),
-}
-_const_types_not = {
-    Num: (bool,),
-}
-
 version = None
 with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
     t = ast.parse(init_file.read(), filename="__init__.py", mode="exec")
@@ -219,7 +87,8 @@ with open(join(here, "html5lib", "__init__.py"), "rb") as init_file:
         if (len(a.targets) == 1 and
                 isinstance(a.targets[0], ast.Name) and
                 a.targets[0].id == "__version__" and
-                isinstance(a.value, Str)):
+                isinstance(a, ast.Constant) and
+                isinstance(a.value, str)):
             version = a.value.s
 
 setup(name='html5lib',
